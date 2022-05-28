@@ -18,6 +18,7 @@
 **vhash** is a C++ reimplementation of [videohash](https://github.com/akamhy/videohash) for **detecting near-duplicate videos**.
 It takes any input video or image file and generate a 64-bit equivalent hash value.
 
+--------------------------------------------------------------------------
 
 ## Build vhash
 
@@ -39,21 +40,21 @@ It takes any input video or image file and generate a 64-bit equivalent hash val
 
 **Centos**
 
-```console
+```shell
 sudo yum install opencv-devel ffmpeg-devel fftw-devel sqlite-devel spdlog-devel
 ```
 
 **Ubuntu**
 
-```console
+```shell
 sudo apt install libopencv-dev libavformat-dev libavcodec-dev libavdevice-dev libavutil-dev libswscale-dev
 sudo apt install libfftw3-dev libsqlite3-dev libspdlog-dev
 ```
 
 **macOS**
 
-```console
-brew install opencv ffmpeg fftw sqlite spdlog
+```shell
+brew install opencv@4 ffmpeg@4 fftw sqlite spdlog
 ```
 
 #### Included
@@ -65,13 +66,13 @@ brew install opencv ffmpeg fftw sqlite spdlog
 
 ### Compile
 
-```console
+```shell
 git clone https://github.com/1132719438/vhash.git
 cd vhash
 make
 ```
 
-```console
+```shell
 bin/vhash hash tests/testdata/lena.png
 ```
 
@@ -84,19 +85,19 @@ bin/vhash hash tests/testdata/lena.png
 
 **Centos**
 
-```console
+```shell
 sudo yum install gtest-devel google-benchmark-devel
 ```
 
 **Ubuntu**
 
-```console
+```shell
 sudo apt install libgtest-dev libbenchmark-dev
 ```
 
 **macOS**
 
-```console
+```shell
 brew install googletest google-benchmark
 ```
 
@@ -114,70 +115,74 @@ brew install googletest google-benchmark
 
 ### Hash
 
-> Generating hash for video or image files  
-> Usage: vhash hash [OPTIONS] path  
-> 
-> Positionals:  
-> path TEXT:PATH(existing) REQUIRED  
-> file or directory path  
-> 
-> Options:  
-> -h,--help                   Print this help message and exit  
-> -e,--ext TEXT ...           file extension filter  
-> -c,--cache TEXT             cache file or url  
-> -o,--output TEXT            output file  
-> -C,--use-cache              use cache  
-> -r,--recursive              recursively find files  
-> -P,--no-progress            not print progress bar  
+```shell
+Generating hash for video or image files  
+Usage: vhash hash [OPTIONS] path  
 
-```console
+Positionals:  
+path TEXT:PATH(existing) REQUIRED file or directory path  
+
+Options:  
+-h,--help                   Print this help message and exit  
+-e,--ext TEXT ...           file extension filter  
+-c,--cache TEXT             cache file or url  
+-o,--output TEXT            output file  
+-C,--use-cache              use cache  
+-r,--recursive              recursively find files  
+-P,--no-progress            not print progress bar  
+```
+
+```shell
 bin/vhash hash -C -o hash.txt some_dir_path
 ```
 
 ### Cache
 
-> Operating on hash cache  
-> Usage: vhash cache [OPTIONS] [path]  
-> 
-> Positionals:  
-> path TEXT                   file full path  
-> 
-> Options:  
-> -h,--help                     Print this help message and exit  
-> -c,--cache TEXT               cache file or url  
-> -f,--find                     find cache item  
-> -d,--del                      delete cache item  
-> -C,--clear                    clear all hash cache  
-> -p,--pure                     pure expired hash cache  
-> -P,--pure-period INT [604800] pure period in seconds
+```shell
+Operating on hash cache  
+Usage: vhash cache [OPTIONS] [path]  
 
-```console
+Positionals:  
+path TEXT                     file full path  
+
+Options:  
+-h,--help                     Print this help message and exit  
+-c,--cache TEXT               cache file or url  
+-f,--find                     find cache item  
+-d,--del                      delete cache item  
+-C,--clear                    clear all hash cache  
+-p,--pure                     pure expired hash cache  
+-P,--pure-period INT [604800] pure period in seconds
+```
+
+```shell
 bin/vhash cache -f some_file_path
 ```
 
 ### Dup
 
-> Finding duplicated video or image files  
-> Usage: vhash dup [OPTIONS] [path]  
-> 
-> Positionals:  
-> path TEXT:PATH(existing)    file or directory path  
-> 
-> Options:  
-> -h,--help                   Print this help message and exit  
-> -e,--ext TEXT ...           file extension filter  
-> -c,--cache TEXT             cache file or url  
-> -o,--output TEXT            output file  
-> -C,--use-cache              use cache  
-> -r,--recursive              recursively find files  
-> -P,--no-progress            not print progress bar
+```shell
+Finding duplicated video or image files  
+Usage: vhash dup [OPTIONS] [path]  
 
-```console
+Positionals:  
+path TEXT:PATH(existing)    file or directory path  
+
+Options:  
+-h,--help                   Print this help message and exit  
+-e,--ext TEXT ...           file extension filter  
+-c,--cache TEXT             cache file or url  
+-o,--output TEXT            output file  
+-C,--use-cache              use cache  
+-r,--recursive              recursively find files  
+-P,--no-progress            not print progress bar
+```
+
+```shell
 bin/vhash dup -C -o dup.txt some_dir_path
 ```
 
 --------------------------------------------------------------------------
-
 
 ## Credits
 
