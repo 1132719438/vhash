@@ -1,6 +1,6 @@
 .PHONY: all debug release dev install clean test bench pytest pybench
 
-all: debug
+all: release
 
 debug:
 	@mkdir -p build && cd build && cmake .. && make
