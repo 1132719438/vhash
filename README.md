@@ -55,6 +55,7 @@ sudo apt install libfftw3-dev libsqlite3-dev libspdlog-dev
 
 ```shell
 brew install opencv@4 ffmpeg@4 fftw sqlite spdlog
+brew link ffmpeg@4
 ```
 
 #### Included

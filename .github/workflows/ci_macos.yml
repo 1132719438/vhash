@@ -11,17 +11,18 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Install dependencies
-      run: |
-        brew install opencv@4 ffmpeg@4 fftw sqlite spdlog
-        brew install googletest google-benchmark
+      - name: Install dependencies
+        run: |
+          brew install opencv@4 ffmpeg@4 fftw sqlite spdlog
+          brew link ffmpeg@4
+          brew install googletest google-benchmark
 
-    - name: Make vhash
-      run: |
-        make dev
+      - name: Make vhash
+        run: |
+          make dev
 
-    - name: Test vhash
-      run: |
-        make test
+      - name: Test vhash
+        run: |
+          make test
