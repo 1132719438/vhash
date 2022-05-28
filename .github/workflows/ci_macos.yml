@@ -15,7 +15,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        brew install opencv ffmpeg fftw sqlite spdlog
+        brew install opencv@4 ffmpeg@4 fftw sqlite spdlog
+        brew install googletest google-benchmark
 
     - name: Make vhash
       run: |
