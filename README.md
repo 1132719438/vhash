@@ -1,0 +1,195 @@
+<div>
+<img src="https://raw.githubusercontent.com/1132719438/vhash/master/assets/logo.png"><br>
+</div>
+
+<h2> The hash tool for duplicate video and image detection </h2>
+
+<p>
+<a href="https://github.com/1132719438/vhash/actions?query=workflow%3AUbuntu"><img alt="Build Status" src="https://github.com/1132719438/vhash/workflows/Ubuntu/badge.svg"></a>
+<a href="https://github.com/1132719438/vhash/actions?query=workflow%3AmacOS"><img alt="Build Status" src="https://github.com/1132719438/vhash/workflows/macOS/badge.svg"></a>
+<img alt="License" src="https://img.shields.io/github/license/1132719438/vhash">
+<img alt="C++" src="https://img.shields.io/badge/c%2B%2B-14-brightgreen">
+</p>
+
+--------------------------------------------------------------------------
+
+## Introduction
+
+**vhash** is a C++ reimplementation of [videohash](https://github.com/akamhy/videohash) for **detecting near-duplicate videos**.
+It takes any input video or image file and generate a 64-bit equivalent hash value.
+
+
+## Build vhash
+
+### Requirements
+
+- A C++ compiler supports **C++14**  
+- CMake  
+
+
+### Dependencies
+
+#### External
+
+- [opencv](https://opencv.org/) for image decoding & resizing  
+- [ffmpeg](https://ffmpeg.org/) for video decoding & frame exacting  
+- [fftw](https://www.fftw.org/) for discrete cosine transform (DCT)  
+- [sqlite3](https://www.sqlite.org/) for file hash value caching  
+- [spdlog](https://github.com/gabime/spdlog) for logging  
+
+**Centos**
+
+```console
+sudo yum install opencv-devel ffmpeg-devel fftw-devel sqlite-devel spdlog-devel
+```
+
+**Ubuntu**
+
+```console
+sudo apt install libopencv-dev libavformat-dev libavcodec-dev libavdevice-dev libavutil-dev libswscale-dev
+sudo apt install libfftw3-dev libsqlite3-dev libspdlog-dev
+```
+
+**macOS**
+
+```console
+brew install opencv ffmpeg fftw sqlite spdlog
+```
+
+#### Included
+
+- [wavelib](https://github.com/rafat/wavelib) for wavelet decomposition  
+- [sqlite_orm](https://github.com/fnc12/sqlite_orm) for file hash value caching  
+- [cpptqdm](https://github.com/aminnj/cpptqdm) for tqdm like progress bar  
+- [CLI11](https://github.com/CLIUtils/CLI11) for command line parsing  
+
+### Compile
+
+```console
+git clone https://github.com/1132719438/vhash.git
+cd vhash
+make
+```
+
+```console
+bin/vhash hash tests/testdata/lena.png
+```
+
+### Development
+
+#### Dependencies
+
+- [googletest](https://github.com/google/googletest) for unit testing  
+- [google benchmark](https://github.com/google/benchmark) for benchmarking 
+
+**Centos**
+
+```console
+sudo yum install gtest-devel google-benchmark-devel
+```
+
+**Ubuntu**
+
+```console
+sudo apt install libgtest-dev libbenchmark-dev
+```
+
+**macOS**
+
+```console
+brew install googletest google-benchmark
+```
+
+--------------------------------------------------------------------------
+
+## Features
+
+- Generate hash value of single file or files in directory.  
+- Store file's hash value in db cache to speed up hash generation.  
+- Find duplicate video or image files in directory.  
+
+--------------------------------------------------------------------------
+
+## Usage
+
+### Hash
+
+> Generating hash for video or image files  
+> Usage: vhash hash [OPTIONS] path  
+> 
+> Positionals:  
+> path TEXT:PATH(existing) REQUIRED  
+> file or directory path  
+> 
+> Options:  
+> -h,--help                   Print this help message and exit  
+> -e,--ext TEXT ...           file extension filter  
+> -c,--cache TEXT             cache file or url  
+> -o,--output TEXT            output file  
+> -C,--use-cache              use cache  
+> -r,--recursive              recursively find files  
+> -P,--no-progress            not print progress bar  
+
+```console
+bin/vhash hash -C -o hash.txt some_dir_path
+```
+
+### Cache
+
+> Operating on hash cache  
+> Usage: vhash cache [OPTIONS] [path]  
+> 
+> Positionals:  
+> path TEXT                   file full path  
+> 
+> Options:  
+> -h,--help                     Print this help message and exit  
+> -c,--cache TEXT               cache file or url  
+> -f,--find                     find cache item  
+> -d,--del                      delete cache item  
+> -C,--clear                    clear all hash cache  
+> -p,--pure                     pure expired hash cache  
+> -P,--pure-period INT [604800] pure period in seconds
+
+```console
+bin/vhash cache -f some_file_path
+```
+
+### Dup
+
+> Finding duplicated video or image files  
+> Usage: vhash dup [OPTIONS] [path]  
+> 
+> Positionals:  
+> path TEXT:PATH(existing)    file or directory path  
+> 
+> Options:  
+> -h,--help                   Print this help message and exit  
+> -e,--ext TEXT ...           file extension filter  
+> -c,--cache TEXT             cache file or url  
+> -o,--output TEXT            output file  
+> -C,--use-cache              use cache  
+> -r,--recursive              recursively find files  
+> -P,--no-progress            not print progress bar
+
+```console
+bin/vhash dup -C -o dup.txt some_dir_path
+```
+
+--------------------------------------------------------------------------
+
+
+## Credits
+
+- [videohash](https://github.com/akamhy/videohash) for video hash.  
+- [imagehash](https://github.com/JohannesBuchner/imagehash) for image hash.  
+- [fastimagehash](https://github.com/simon987/fastimagehash) for C++ implementation of image hash.   
+
+--------------------------------------------------------------------------
+
+## License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/1132719438/vhash/blob/master/LICENSE)
+
+Copyright (c) 2022 Leo. See
+[LICENSE](https://github.com/1132719438/vhash/blob/master/LICENSE) for details.
