@@ -40,20 +40,20 @@ It takes any input video or image file and generate a 64-bit equivalent hash val
 
 **Centos**
 
-```shell
+```bash
 sudo yum install opencv-devel ffmpeg-devel fftw-devel sqlite-devel spdlog-devel
 ```
 
 **Ubuntu**
 
-```shell
+```bash
 sudo apt install libopencv-dev libavformat-dev libavcodec-dev libavdevice-dev libavutil-dev libswscale-dev
 sudo apt install libfftw3-dev libsqlite3-dev libspdlog-dev
 ```
 
 **macOS**
 
-```shell
+```bash
 brew install opencv@4 ffmpeg@4 fftw sqlite spdlog
 brew link ffmpeg@4
 ```
@@ -67,13 +67,13 @@ brew link ffmpeg@4
 
 ### Compile
 
-```shell
+```bash
 git clone https://github.com/1132719438/vhash.git
 cd vhash
 make
 ```
 
-```shell
+```bash
 bin/vhash hash tests/testdata/lena.png
 ```
 
@@ -86,19 +86,19 @@ bin/vhash hash tests/testdata/lena.png
 
 **Centos**
 
-```shell
+```bash
 sudo yum install gtest-devel google-benchmark-devel
 ```
 
 **Ubuntu**
 
-```shell
+```bash
 sudo apt install libgtest-dev libbenchmark-dev
 ```
 
 **macOS**
 
-```shell
+```bash
 brew install googletest google-benchmark
 ```
 
@@ -116,7 +116,7 @@ brew install googletest google-benchmark
 
 ### Hash
 
-```shell
+```bash
 Generating hash for video or image files  
 Usage: vhash hash [OPTIONS] path  
 
@@ -133,13 +133,13 @@ Options:
 -P,--no-progress            not print progress bar  
 ```
 
-```shell
+```bash
 bin/vhash hash -C -o hash.txt some_dir_path
 ```
 
 ### Cache
 
-```shell
+```bash
 Operating on hash cache  
 Usage: vhash cache [OPTIONS] [path]  
 
@@ -156,13 +156,13 @@ Options:
 -P,--pure-period INT [604800] pure period in seconds
 ```
 
-```shell
+```bash
 bin/vhash cache -f some_file_path
 ```
 
 ### Dup
 
-```shell
+```bash
 Finding duplicated video or image files  
 Usage: vhash dup [OPTIONS] [path]  
 
@@ -179,7 +179,7 @@ Options:
 -P,--no-progress            not print progress bar
 ```
 
-```shell
+```bash
 bin/vhash dup -C -o dup.txt some_dir_path
 ```
 
