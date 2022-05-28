@@ -75,6 +75,8 @@ target_link_libraries(
         ${DEP_LIBRARIES}
 )
 
+install(TARGETS vhash DESTINATION bin)
+
 # test
 if (BUILD_TEST)
 find_package(GTest REQUIRED)

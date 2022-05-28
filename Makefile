@@ -1,4 +1,4 @@
-.PHONY: all debug release dev clean test bench pytest pybench
+.PHONY: all debug release dev install clean test bench pytest pybench
 
 all: debug
 
@@ -10,6 +10,9 @@ release:
 
 dev:
 	@mkdir -p build && cd build && cmake -DBUILD_TEST=ON -DBUILD_BENCH=ON .. && make
+
+install:
+	@mkdir -p build && cd build && make install
 
 clean:
 	@mkdir -p build && cd build && make clean

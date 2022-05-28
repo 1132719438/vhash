@@ -22,12 +22,6 @@ message(">>> EXECUTABLE_OUTPUT_PATH = ${EXECUTABLE_OUTPUT_PATH}")
 # cleanup prefix lib for Unix-like OSes
 set(CMAKE_SHARED_MODULE_PREFIX)
 
-# install target to this folder by default
-set(WAVELIB_BINARY_DIR ${WAVELIB_SRC_ROOT}/bin)
-if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-    set(CMAKE_INSTALL_PREFIX "${WAVELIB_BINARY_DIR}" CACHE PATH "default install path" FORCE)
-endif()
-
 # make include globaly visible
 set(PROJECT_WIDE_INCLUDE ${WAVELIB_SRC_ROOT}/header)
 include_directories(${PROJECT_WIDE_INCLUDE})
@@ -35,7 +29,3 @@ include_directories(${PROJECT_WIDE_INCLUDE})
 include_directories(${COMMON_BIN_PATH})
 
 add_subdirectory(src)
-
-install(DIRECTORY ${WAVELIB_SRC_ROOT}/header/
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-    FILES_MATCHING PATTERN "*.h")
