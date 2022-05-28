@@ -7,7 +7,7 @@
 <p>
 <a href="https://github.com/1132719438/vhash/actions?query=workflow%3AUbuntu"><img alt="Build Status" src="https://github.com/1132719438/vhash/workflows/Ubuntu/badge.svg"></a>
 <a href="https://github.com/1132719438/vhash/actions?query=workflow%3AmacOS"><img alt="Build Status" src="https://github.com/1132719438/vhash/workflows/macOS/badge.svg"></a>
-<img alt="License" src="https://img.shields.io/github/license/1132719438/vhash">
+<img alt="License" src="https://img.shields.io/github/license/1132719438/vhash?style=plastic">
 <img alt="C++" src="https://img.shields.io/badge/c%2B%2B-14-brightgreen">
 </p>
 
