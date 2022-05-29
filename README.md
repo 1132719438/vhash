@@ -2,7 +2,7 @@
 <img src="https://raw.githubusercontent.com/1132719438/vhash/master/assets/logo.png"><br>
 </div>
 
-<h2> The hash tool for duplicate video and image detection </h2>
+<h2 align="center"> The hash tool for duplicate video and image detection </h2>
 
 <p>
 <a href="https://github.com/1132719438/vhash/actions?query=workflow%3AUbuntu"><img alt="Build Status" src="https://github.com/1132719438/vhash/workflows/Ubuntu/badge.svg"></a>
