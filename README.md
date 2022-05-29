@@ -25,7 +25,7 @@ It takes any input video or image file and generate a 64-bit equivalent hash val
 ### Requirements
 
 - A C++ compiler supports **C++14**  
-- CMake  
+- CMake >= 3.11  
 
 
 ### Dependencies
@@ -33,12 +33,12 @@ It takes any input video or image file and generate a 64-bit equivalent hash val
 #### External
 
 - [opencv](https://opencv.org/) for image decoding & resizing  
-- [ffmpeg](https://ffmpeg.org/) for video decoding & frame exacting  
+- [ffmpeg](https://ffmpeg.org/) for video decoding & frame extracting  
 - [fftw](https://www.fftw.org/) for discrete cosine transform (DCT)  
 - [sqlite3](https://www.sqlite.org/) for file hash value caching  
 - [spdlog](https://github.com/gabime/spdlog) for logging  
 
-**Centos**
+**CentOS**
 
 ```bash
 sudo yum install opencv-devel ffmpeg-devel fftw-devel sqlite-devel spdlog-devel
@@ -84,7 +84,7 @@ bin/vhash hash tests/testdata/lena.png
 - [googletest](https://github.com/google/googletest) for unit testing  
 - [google benchmark](https://github.com/google/benchmark) for benchmarking 
 
-**Centos**
+**CentOS**
 
 ```bash
 sudo yum install gtest-devel google-benchmark-devel
@@ -116,8 +116,9 @@ brew install googletest google-benchmark
 
 ### Hash
 
+> Generating hash for video or image files  
+
 ```bash
-Generating hash for video or image files  
 Usage: vhash hash [OPTIONS] path  
 
 Positionals:  
@@ -139,8 +140,9 @@ bin/vhash hash -C -o hash.txt some_dir_path
 
 ### Cache
 
+> Operating on hash cache  
+
 ```bash
-Operating on hash cache  
 Usage: vhash cache [OPTIONS] [path]  
 
 Positionals:  
@@ -162,8 +164,9 @@ bin/vhash cache -f some_file_path
 
 ### Dup
 
+> Finding duplicate video or image files  
+
 ```bash
-Finding duplicate video or image files  
 Usage: vhash dup [OPTIONS] [path]  
 
 Positionals:  
