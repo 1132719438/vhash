@@ -38,7 +38,7 @@ int app_run(int argc, char *argv[]) {
     // cache command
     cache_config c_conf;
     auto& c_cmd = *app.add_subcommand("cache", "Operating on hash cache");
-    c_cmd.add_option("path", c_conf.path, "file full path");
+    c_cmd.add_option("path", c_conf.path, "full file path");
     c_cmd.add_option("-c,--cache", c_conf.cache_url, "cache file or url");
     c_cmd.add_flag("-f,--find", c_conf.find, "find cache item");
     c_cmd.add_flag("-d,--del", c_conf.del, "delete cache item");
@@ -48,9 +48,9 @@ int app_run(int argc, char *argv[]) {
 
     // dup command
     dup_config d_conf;
-    auto& d_cmd = *app.add_subcommand("dup", "Finding duplicated video or image files");
+    auto& d_cmd = *app.add_subcommand("dup", "Finding duplicate video or image files");
     d_cmd.add_option("path", d_conf.path, "file or directory path")->check(CLI::ExistingPath);
-    d_cmd.add_option("-e,--ext", d_conf.ext, "file extension filter")->delimiter(',')->check(not_empty_checker);
+    d_cmd.add_option("-e,--ext", d_conf.ext, "file extension filter (i.e. -e mp4,mkv)")->delimiter(',')->check(not_empty_checker);
     d_cmd.add_option("-c,--cache", d_conf.cache_url, "cache file or url")->check(not_empty_checker);
     d_cmd.add_option("-o,--output", d_conf.output, "output file")->check(not_empty_checker);
     d_cmd.add_option("-j,--jobs", d_conf.jobs, "parallel jobs")->check(CLI::NonNegativeNumber)->default_val(0);
@@ -62,7 +62,7 @@ int app_run(int argc, char *argv[]) {
     hash_config h_conf;
     auto& h_cmd = *app.add_subcommand("hash", "Generating hash for video or image files");
     h_cmd.add_option("path", h_conf.path, "file or directory path")->check(CLI::ExistingPath)->required();
-    h_cmd.add_option("-e,--ext", h_conf.ext, "file extension filter")->delimiter(',')->check(not_empty_checker);
+    h_cmd.add_option("-e,--ext", h_conf.ext, "file extension filter (i.e. -e mp4,mkv)")->delimiter(',')->check(not_empty_checker);
     h_cmd.add_option("-c,--cache", h_conf.cache_url, "cache file or url")->check(not_empty_checker);
     h_cmd.add_option("-o,--output", h_conf.output, "output file")->check(not_empty_checker);
     h_cmd.add_option("-j,--jobs", h_conf.jobs, "parallel jobs")->check(CLI::NonNegativeNumber)->default_val(0);

@@ -125,7 +125,7 @@ path TEXT:PATH(existing) REQUIRED file or directory path
 
 Options:  
 -h,--help                   Print this help message and exit  
--e,--ext TEXT ...           file extension filter  
+-e,--ext TEXT ...           file extension filter (i.e. -e mp4,mkv)  
 -c,--cache TEXT             cache file or url  
 -o,--output TEXT            output file  
 -C,--use-cache              use cache  
@@ -144,7 +144,7 @@ Operating on hash cache
 Usage: vhash cache [OPTIONS] [path]  
 
 Positionals:  
-path TEXT                     file full path  
+path TEXT                     full file path  
 
 Options:  
 -h,--help                     Print this help message and exit  
@@ -163,7 +163,7 @@ bin/vhash cache -f some_file_path
 ### Dup
 
 ```bash
-Finding duplicated video or image files  
+Finding duplicate video or image files  
 Usage: vhash dup [OPTIONS] [path]  
 
 Positionals:  
@@ -171,7 +171,7 @@ path TEXT:PATH(existing)    file or directory path
 
 Options:  
 -h,--help                   Print this help message and exit  
--e,--ext TEXT ...           file extension filter  
+-e,--ext TEXT ...           file extension filter (i.e. -e mp4,mkv)  
 -c,--cache TEXT             cache file or url  
 -o,--output TEXT            output file  
 -C,--use-cache              use cache  
