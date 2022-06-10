@@ -26,7 +26,7 @@ int app_run(int argc, char *argv[]) {
     CLI::App app{"Video and image hash tool", "vhash"};
     app.set_version_flag("-v,--version", VHASH_VERSION);
     bool silent = false;
-    app.add_flag("-s,--silent", silent, "in silent way");
+    app.add_flag("-s,--silent", silent, "Run in silent way");
 
     auto not_empty_checker = [](const std::string& s) -> std::string {
         if (s.empty()) {
@@ -80,6 +80,8 @@ int app_run(int argc, char *argv[]) {
         return dup_cmd(d_conf);
     } else if (h_cmd) {
         return hash_cmd(h_conf);
+    } else {
+        std::cout<< app.help() << std::endl;
     }
     return 0;
 }
